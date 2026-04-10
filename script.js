@@ -5,7 +5,7 @@ const result = document.getElementById("result");
 let selected = [];
 
 /* بدء */
-document.getElementById("Btn-Container").onclick = () => {
+document.getElementById("startBtn").onclick = () => {
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("app").style.display = "block";
 };
