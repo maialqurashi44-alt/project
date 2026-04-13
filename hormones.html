@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>اختيار الهرمون</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+    <h1>🧠 اختاري الهرمون</h1>
+
+    <div class="cards">
+        <div class="card" onclick="goHormone('estrogen')">Estrogen</div>
+        <div class="card" onclick="goHormone('progesterone')">Progesterone</div>
+        <div class="card" onclick="goHormone('hcg')">HCG</div>
+        <div class="card" onclick="goHormone('lh')">LH</div>
+    </div>
+
+    <button onclick="goBack()" class="btn">رجوع</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

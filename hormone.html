@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>شرح الهرمون</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+    <h1 id="title"></h1>
+    <p id="desc"></p>
+    <p id="function"></p>
+    <p id="problems"></p>
+
+    <button onclick="history.back()" class="btn">رجوع</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const hormone = params.get("hormone");
+
+let title = "";
+let desc = "";
+let func = "";
+let problems = "";
+
+// الإستروجين
+if (hormone === "estrogen") {
+    title = "🌸 هرمون الإستروجين";
+    desc = "هرمون أنثوي أساسي يلعب دور مهم أثناء الحمل.";
+    func = "يساعد على نمو الرحم وتحسين تدفق الدم ودعم تطور الجنين.";
+    problems = "زيادته: ممكن تسبب ضغط دم أو مشاكل في المشيمة. نقصه: قد يؤدي لضعف نمو الجنين أو مشاكل في الحمل.";
+}
+
+// البروجسترون
+else if (hormone === "progesterone") {
+    title = "🌼 هرمون البروجسترون";
+    desc = "هرمون يحافظ على استقرار الحمل.";
+    func = "يثبت بطانة الرحم ويمنع انقباضاته ويحافظ على الجنين.";
+    problems = "نقصه: ممكن يسبب إجهاض مبكر. زيادته: قد يسبب تعب شديد ودوخة.";
+}
+
+// hCG
+else if (hormone === "hcg") {
+    title = "🤰 هرمون hCG";
+    desc = "هرمون يظهر في بداية الحمل.";
+    func = "يحافظ على إفراز البروجسترون ويثبت الحمل في مراحله الأولى.";
+    problems = "ارتفاعه: ممكن يدل على حمل توأم أو مشكلة. انخفاضه: قد يكون مؤشر خطر على الحمل.";
+}
+
+// LH
+else if (hormone === "lh") {
+    title = "🧪 هرمون LH";
+    desc = "هرمون مهم في تنظيم التبويض.";
+    func = "يساعد على إطلاق البويضة من المبيض، ويحفز إنتاج هرمونات ضرورية للحمل.";
+    problems = "زيادته: قد يدل على تكيس المبايض. نقصه: يسبب ضعف التبويض وتأخر الحمل.";
+}
+
+document.getElementById("title").innerText = title;
+document.getElementById("desc").innerText = desc;
+document.getElementById("function").innerText = "📌 الوظيفة: " + func;
+document.getElementById("problems").innerText = "⚠️ المشاكل: " + problems;
+
+</script>
+
+</body>
+</html>
