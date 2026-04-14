@@ -1,3 +1,4 @@
+/* إعدادات عامة */
 body {
     margin: 0;
     font-family: "Tajawal", sans-serif;
@@ -10,6 +11,7 @@ body {
     overflow: hidden;
 }
 
+/* طبقة تغميق */
 .overlay {
     position: absolute;
     width: 100%;
@@ -18,6 +20,7 @@ body {
     pointer-events: none;
 }
 
+/* إضاءة سينمائية */
 body::after {
     content: "";
     position: absolute;
@@ -27,6 +30,7 @@ body::after {
     pointer-events: none;
 }
 
+/* الصندوق الرئيسي */
 .container {
     position: relative;
     text-align: center;
@@ -38,11 +42,28 @@ body::after {
     animation: fade 1s;
 }
 
+/* أنيميشن */
 @keyframes fade {
-    from {opacity:0; transform: translateY(40px);}
-    to {opacity:1;}
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* العناوين */
+h1 {
+    font-size: 28px;
+}
+
+p {
+    opacity: 0.9;
+}
+
+/* الأزرار */
 .btn {
     margin-top: 20px;
     padding: 12px 25px;
@@ -58,6 +79,7 @@ body::after {
     transform: scale(1.1);
 }
 
+/* الكروت */
 .cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -71,6 +93,7 @@ body::after {
     background: rgba(255,255,255,0.1);
     cursor: pointer;
     transition: 0.3s;
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {
@@ -78,7 +101,8 @@ body::after {
     background: rgba(0,255,255,0.2);
 }
 
-/* المحاكاة */
+/* ===== المحاكاة ===== */
+
 .sim-box {
     margin-top: 20px;
     padding: 20px;
@@ -86,6 +110,7 @@ body::after {
     background: rgba(255,255,255,0.1);
 }
 
+/* صف الهرمون */
 .hormone {
     display: flex;
     align-items: center;
@@ -93,23 +118,49 @@ body::after {
     margin: 15px 0;
 }
 
-.bar {
-    flex: 1;
-    height: 10px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
+/* اسم الهرمون */
+.hormone span {
+    width: 110px;
+    text-align: left;
 }
 
+/* البار */
+.bar {
+    flex: 1;
+    height: 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* الجزء المتحرك (المهم) */
 .fill {
     height: 100%;
     width: 50%;
     background: lime;
-    transition: 0.3s;
+    display: block;
+    transition: all 0.3s ease;
 }
 
+/* أزرار + و - */
 .hormone button {
     border: none;
     border-radius: 50%;
-    padding: 5px 10px;
+    padding: 6px 10px;
     cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    transition: 0.2s;
+}
+
+.hormone button:hover {
+    background: rgba(0,255,255,0.5);
+    transform: scale(1.2);
+}
+
+/* نص النتيجة */
+#result {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.6;
 }
