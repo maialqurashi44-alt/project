@@ -60,7 +60,9 @@ let levels = {
 
 function updateBar(name) {
     let bar = document.getElementById(name + "Bar");
+
     bar.style.width = levels[name] + "%";
+    bar.style.display = "block";
 
     if (levels[name] < 40) {
         bar.style.background = "orange";
@@ -90,18 +92,54 @@ function decrease(name) {
 function showEffect(name) {
     let text = "";
 
-    if (levels[name] < 40) {
-        text = "⚠️ نقص في " + name + ": قد يسبب مشاكل في الحمل.";
-    } else if (levels[name] > 70) {
-        text = "⚠️ زيادة في " + name + ": قد تسبب مضاعفات.";
-    } else {
-        text = "✅ المستوى طبيعي.";
+    // ESTROGEN
+    if (name === "estrogen") {
+        if (levels[name] < 40) {
+            text = "⚠️ نقص الإستروجين: قد يؤدي إلى ضعف نمو بطانة الرحم، مما يزيد خطر الإجهاض أو تأخر نمو الجنين.";
+        } else if (levels[name] > 70) {
+            text = "⚠️ زيادة الإستروجين: قد تسبب ارتفاع ضغط الدم أثناء الحمل أو مشاكل في المشيمة.";
+        } else {
+            text = "✅ مستوى الإستروجين طبيعي ويساعد على نمو الرحم ودعم الجنين.";
+        }
+    }
+
+    // PROGESTERONE
+    else if (name === "progesterone") {
+        if (levels[name] < 40) {
+            text = "⚠️ نقص البروجسترون: قد يؤدي إلى عدم استقرار بطانة الرحم وزيادة خطر الإجهاض المبكر.";
+        } else if (levels[name] > 70) {
+            text = "⚠️ زيادة البروجسترون: قد تسبب خمول شديد، دوخة، واضطرابات في الجهاز الهضمي.";
+        } else {
+            text = "✅ مستوى البروجسترون طبيعي ويحافظ على استقرار الحمل.";
+        }
+    }
+
+    // HCG
+    else if (name === "hcg") {
+        if (levels[name] < 40) {
+            text = "⚠️ انخفاض هرمون hCG: قد يكون مؤشر على ضعف الحمل أو خطر فقدانه.";
+        } else if (levels[name] > 70) {
+            text = "⚠️ ارتفاع هرمون hCG: قد يدل على حمل بتوأم أو في بعض الحالات مشاكل مثل الحمل العنقودي.";
+        } else {
+            text = "✅ مستوى hCG طبيعي ويدعم استمرار الحمل في مراحله الأولى.";
+        }
+    }
+
+    // LH
+    else if (name === "lh") {
+        if (levels[name] < 40) {
+            text = "⚠️ نقص LH: قد يؤدي إلى ضعف التبويض وتأخر حدوث الحمل.";
+        } else if (levels[name] > 70) {
+            text = "⚠️ ارتفاع LH: قد يكون مرتبط بمتلازمة تكيس المبايض ويؤثر على انتظام التبويض.";
+        } else {
+            text = "✅ مستوى LH طبيعي ويساعد على حدوث التبويض بشكل سليم.";
+        }
     }
 
     document.getElementById("result").innerText = text;
 }
 
-// تشغيل أولي
+// تشغيل أولي (مهم عشان ما يختفي البار)
 for (let h in levels) {
     updateBar(h);
 }
@@ -110,3 +148,4 @@ for (let h in levels) {
 
 </body>
 </html>
+
