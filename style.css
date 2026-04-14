@@ -10,26 +10,23 @@ body {
     overflow: hidden;
 }
 
-/* تغميق */
 .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.65);
-    pointer-events:none;
+    pointer-events: none;
 }
 
-/* إضاءة */
 body::after {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(255,140,0,0.3), transparent 70%);
-    pointer-events:none;
+    pointer-events: none;
 }
 
-/* الصندوق */
 .container {
     position: relative;
     text-align: center;
@@ -46,22 +43,11 @@ body::after {
     to {opacity:1;}
 }
 
-h1 {
-    font-size: 28px;
-}
-
-p {
-    opacity: 0.9;
-}
-
-/* زر */
 .btn {
-    display: inline-block;
     margin-top: 20px;
     padding: 12px 25px;
     border-radius: 30px;
     background: linear-gradient(45deg, #00ffff, #0077ff);
-    text-decoration: none;
     color: white;
     border: none;
     cursor: pointer;
@@ -72,7 +58,6 @@ p {
     transform: scale(1.1);
 }
 
-/* الكروت */
 .cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -86,10 +71,45 @@ p {
     background: rgba(255,255,255,0.1);
     cursor: pointer;
     transition: 0.3s;
-    backdrop-filter: blur(10px);
 }
 
 .card:hover {
     transform: scale(1.1);
     background: rgba(0,255,255,0.2);
+}
+
+/* المحاكاة */
+.sim-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+}
+
+.hormone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.bar {
+    flex: 1;
+    height: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+.fill {
+    height: 100%;
+    width: 50%;
+    background: lime;
+    transition: 0.3s;
+}
+
+.hormone button {
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
 }
