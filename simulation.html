@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>محاكاة الهرمونات</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+    <h1>🧪 محاكاة الهرمونات</h1>
+
+    <div class="sim-box">
+
+        <div class="hormone">
+            <span>Estrogen</span>
+            <button onclick="decrease('estrogen')">➖</button>
+            <div class="bar"><div id="estrogenBar" class="fill"></div></div>
+            <button onclick="increase('estrogen')">➕</button>
+        </div>
+
+        <div class="hormone">
+            <span>Progesterone</span>
+            <button onclick="decrease('progesterone')">➖</button>
+            <div class="bar"><div id="progesteroneBar" class="fill"></div></div>
+            <button onclick="increase('progesterone')">➕</button>
+        </div>
+
+        <div class="hormone">
+            <span>HCG</span>
+            <button onclick="decrease('hcg')">➖</button>
+            <div class="bar"><div id="hcgBar" class="fill"></div></div>
+            <button onclick="increase('hcg')">➕</button>
+        </div>
+
+        <div class="hormone">
+            <span>LH</span>
+            <button onclick="decrease('lh')">➖</button>
+            <div class="bar"><div id="lhBar" class="fill"></div></div>
+            <button onclick="increase('lh')">➕</button>
+        </div>
+
+    </div>
+
+    <p id="result"></p>
+
+</div>
+
+<script>
+
+let levels = {
+    estrogen: 50,
+    progesterone: 50,
+    hcg: 50,
+    lh: 50
+};
+
+function updateBar(name) {
+    let bar = document.getElementById(name + "Bar");
+    bar.style.width = levels[name] + "%";
+
+    if (levels[name] < 40) {
+        bar.style.background = "orange";
+    } else if (levels[name] > 70) {
+        bar.style.background = "red";
+    } else {
+        bar.style.background = "lime";
+    }
+}
+
+function increase(name) {
+    if (levels[name] < 100) {
+        levels[name] += 10;
+        updateBar(name);
+        showEffect(name);
+    }
+}
+
+function decrease(name) {
+    if (levels[name] > 0) {
+        levels[name] -= 10;
+        updateBar(name);
+        showEffect(name);
+    }
+}
+
+function showEffect(name) {
+    let text = "";
+
+    if (levels[name] < 40) {
+        text = "⚠️ نقص في " + name + ": قد يسبب مشاكل في الحمل.";
+    } else if (levels[name] > 70) {
+        text = "⚠️ زيادة في " + name + ": قد تسبب مضاعفات.";
+    } else {
+        text = "✅ المستوى طبيعي.";
+    }
+
+    document.getElementById("result").innerText = text;
+}
+
+// تشغيل أولي
+for (let h in levels) {
+    updateBar(h);
+}
+
+</script>
+
+</body>
+</html>
