@@ -15,31 +15,55 @@
 
     <div class="sim-box">
 
+        <!-- الإستروجين -->
         <div class="hormone">
-            <span>Estrogen</span>
+            <span>الإستروجين</span>
+
             <button onclick="decrease('estrogen')">➖</button>
-            <div class="bar"><div id="estrogenBar" class="fill"></div></div>
+
+            <div class="bar">
+                <div id="estrogenBar" class="fill"></div>
+            </div>
+
             <button onclick="increase('estrogen')">➕</button>
         </div>
 
+        <!-- البروجسترون -->
         <div class="hormone">
-            <span>Progesterone</span>
+            <span>البروجسترون</span>
+
             <button onclick="decrease('progesterone')">➖</button>
-            <div class="bar"><div id="progesteroneBar" class="fill"></div></div>
+
+            <div class="bar">
+                <div id="progesteroneBar" class="fill"></div>
+            </div>
+
             <button onclick="increase('progesterone')">➕</button>
         </div>
 
+        <!-- HCG -->
         <div class="hormone">
-            <span>HCG</span>
+            <span>hCG</span>
+
             <button onclick="decrease('hcg')">➖</button>
-            <div class="bar"><div id="hcgBar" class="fill"></div></div>
+
+            <div class="bar">
+                <div id="hcgBar" class="fill"></div>
+            </div>
+
             <button onclick="increase('hcg')">➕</button>
         </div>
 
+        <!-- LH -->
         <div class="hormone">
             <span>LH</span>
+
             <button onclick="decrease('lh')">➖</button>
-            <div class="bar"><div id="lhBar" class="fill"></div></div>
+
+            <div class="bar">
+                <div id="lhBar" class="fill"></div>
+            </div>
+
             <button onclick="increase('lh')">➕</button>
         </div>
 
@@ -51,6 +75,7 @@
 
 <script>
 
+// القيم الابتدائية
 let levels = {
     estrogen: 50,
     progesterone: 50,
@@ -58,11 +83,11 @@ let levels = {
     lh: 50
 };
 
+// تحديث البار (مهم جداً)
 function updateBar(name) {
     let bar = document.getElementById(name + "Bar");
 
     bar.style.width = levels[name] + "%";
-    bar.style.display = "block";
 
     if (levels[name] < 40) {
         bar.style.background = "orange";
@@ -73,6 +98,7 @@ function updateBar(name) {
     }
 }
 
+// زيادة
 function increase(name) {
     if (levels[name] < 100) {
         levels[name] += 10;
@@ -81,6 +107,7 @@ function increase(name) {
     }
 }
 
+// نقصان
 function decrease(name) {
     if (levels[name] > 0) {
         levels[name] -= 10;
@@ -89,63 +116,69 @@ function decrease(name) {
     }
 }
 
+// شرح علمي تفصيلي 🔥
 function showEffect(name) {
     let text = "";
 
-    // ESTROGEN
     if (name === "estrogen") {
         if (levels[name] < 40) {
-            text = "⚠️ نقص الإستروجين: قد يؤدي إلى ضعف نمو بطانة الرحم، مما يزيد خطر الإجهاض أو تأخر نمو الجنين.";
-        } else if (levels[name] > 70) {
-            text = "⚠️ زيادة الإستروجين: قد تسبب ارتفاع ضغط الدم أثناء الحمل أو مشاكل في المشيمة.";
-        } else {
-            text = "✅ مستوى الإستروجين طبيعي ويساعد على نمو الرحم ودعم الجنين.";
+            text = "⚠️ نقص هرمون الإستروجين: قد يؤدي إلى ضعف بطانة الرحم، مما يزيد من خطر الإجهاض أو عدم ثبات الحمل، وقد يؤثر على تدفق الدم للجنين.";
+        } 
+        else if (levels[name] > 70) {
+            text = "⚠️ زيادة هرمون الإستروجين: قد تسبب ارتفاع ضغط الدم أثناء الحمل، وزيادة خطر اضطرابات المشيمة، وقد تؤثر على توازن الهرمونات.";
+        } 
+        else {
+            text = "✅ مستوى الإستروجين طبيعي: يدعم نمو الرحم ويحسن تدفق الدم للجنين.";
         }
     }
 
-    // PROGESTERONE
     else if (name === "progesterone") {
         if (levels[name] < 40) {
-            text = "⚠️ نقص البروجسترون: قد يؤدي إلى عدم استقرار بطانة الرحم وزيادة خطر الإجهاض المبكر.";
-        } else if (levels[name] > 70) {
-            text = "⚠️ زيادة البروجسترون: قد تسبب خمول شديد، دوخة، واضطرابات في الجهاز الهضمي.";
-        } else {
-            text = "✅ مستوى البروجسترون طبيعي ويحافظ على استقرار الحمل.";
+            text = "⚠️ نقص هرمون البروجسترون: قد يؤدي إلى عدم ثبات بطانة الرحم، مما يزيد احتمال الإجهاض المبكر.";
+        } 
+        else if (levels[name] > 70) {
+            text = "⚠️ زيادة البروجسترون: قد تسبب خمول، تعب شديد، دوخة، واضطرابات في الجهاز الهضمي.";
+        } 
+        else {
+            text = "✅ مستوى البروجسترون طبيعي: يساعد على تثبيت الحمل ومنع انقباضات الرحم.";
         }
     }
 
-    // HCG
     else if (name === "hcg") {
         if (levels[name] < 40) {
-            text = "⚠️ انخفاض هرمون hCG: قد يكون مؤشر على ضعف الحمل أو خطر فقدانه.";
-        } else if (levels[name] > 70) {
-            text = "⚠️ ارتفاع هرمون hCG: قد يدل على حمل بتوأم أو في بعض الحالات مشاكل مثل الحمل العنقودي.";
-        } else {
-            text = "✅ مستوى hCG طبيعي ويدعم استمرار الحمل في مراحله الأولى.";
+            text = "⚠️ انخفاض هرمون hCG: قد يدل على ضعف الحمل أو احتمال فقدانه في مراحله المبكرة.";
+        } 
+        else if (levels[name] > 70) {
+            text = "⚠️ ارتفاع هرمون hCG: قد يشير إلى حمل بتوأم أو في بعض الحالات مشاكل مثل الحمل العنقودي.";
+        } 
+        else {
+            text = "✅ مستوى hCG طبيعي: يساعد على دعم الحمل في مراحله الأولى.";
         }
     }
 
-    // LH
     else if (name === "lh") {
         if (levels[name] < 40) {
-            text = "⚠️ نقص LH: قد يؤدي إلى ضعف التبويض وتأخر حدوث الحمل.";
-        } else if (levels[name] > 70) {
-            text = "⚠️ ارتفاع LH: قد يكون مرتبط بمتلازمة تكيس المبايض ويؤثر على انتظام التبويض.";
-        } else {
-            text = "✅ مستوى LH طبيعي ويساعد على حدوث التبويض بشكل سليم.";
+            text = "⚠️ نقص هرمون LH: قد يؤدي إلى ضعف التبويض وتأخر حدوث الحمل.";
+        } 
+        else if (levels[name] > 70) {
+            text = "⚠️ ارتفاع هرمون LH: قد يكون مرتبط بمتلازمة تكيس المبايض ويؤثر على انتظام التبويض.";
+        } 
+        else {
+            text = "✅ مستوى LH طبيعي: يساعد على حدوث التبويض بشكل سليم.";
         }
     }
 
     document.getElementById("result").innerText = text;
 }
 
-// تشغيل أولي (مهم عشان ما يختفي البار)
-for (let h in levels) {
-    updateBar(h);
-}
+// تشغيل أولي (ضروري)
+window.onload = function() {
+    for (let h in levels) {
+        updateBar(h);
+    }
+};
 
 </script>
 
 </body>
 </html>
-
