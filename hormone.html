@@ -16,7 +16,10 @@
     <p id="function"></p>
     <p id="problems"></p>
 
-    <button onclick="history.back()" class="btn">رجوع</button>
+    <div style="display:flex; gap:10px; justify-content:center;">
+        <button onclick="history.back()" class="btn">رجوع</button>
+        <button onclick="nextPage()" class="btn">التالي</button>
+    </div>
 </div>
 
 <script>
@@ -28,36 +31,36 @@ let desc = "";
 let func = "";
 let problems = "";
 
-// الإستروجين
+// Estrogen
 if (hormone === "estrogen") {
     title = "🌸 هرمون الإستروجين";
-    desc = "هرمون أنثوي أساسي يلعب دور مهم أثناء الحمل.";
-    func = "يساعد على نمو الرحم وتحسين تدفق الدم ودعم تطور الجنين.";
-    problems = "زيادته: ممكن تسبب ضغط دم أو مشاكل في المشيمة. نقصه: قد يؤدي لضعف نمو الجنين أو مشاكل في الحمل.";
+    desc = "هرمون أنثوي أساسي أثناء الحمل.";
+    func = "يساعد على نمو الرحم وتحسين تدفق الدم.";
+    problems = "نقصه يسبب ضعف نمو الجنين، زيادته قد تسبب مشاكل بالمشيمة.";
 }
 
-// البروجسترون
+// Progesterone
 else if (hormone === "progesterone") {
     title = "🌼 هرمون البروجسترون";
-    desc = "هرمون يحافظ على استقرار الحمل.";
-    func = "يثبت بطانة الرحم ويمنع انقباضاته ويحافظ على الجنين.";
-    problems = "نقصه: ممكن يسبب إجهاض مبكر. زيادته: قد يسبب تعب شديد ودوخة.";
+    desc = "يحافظ على الحمل.";
+    func = "يثبت بطانة الرحم ويحمي الجنين.";
+    problems = "نقصه قد يسبب إجهاض، زيادته تسبب تعب ودوخة.";
 }
 
-// hCG
+// HCG
 else if (hormone === "hcg") {
     title = "🤰 هرمون hCG";
-    desc = "هرمون يظهر في بداية الحمل.";
-    func = "يحافظ على إفراز البروجسترون ويثبت الحمل في مراحله الأولى.";
-    problems = "ارتفاعه: ممكن يدل على حمل توأم أو مشكلة. انخفاضه: قد يكون مؤشر خطر على الحمل.";
+    desc = "هرمون الحمل المبكر.";
+    func = "يحافظ على إفراز البروجسترون.";
+    problems = "ارتفاعه يدل على توأم، انخفاضه خطر على الحمل.";
 }
 
 // LH
 else if (hormone === "lh") {
     title = "🧪 هرمون LH";
-    desc = "هرمون مهم في تنظيم التبويض.";
-    func = "يساعد على إطلاق البويضة من المبيض، ويحفز إنتاج هرمونات ضرورية للحمل.";
-    problems = "زيادته: قد يدل على تكيس المبايض. نقصه: يسبب ضعف التبويض وتأخر الحمل.";
+    desc = "ينظم التبويض.";
+    func = "يساعد على إطلاق البويضة.";
+    problems = "زيادته تدل على تكيس، نقصه يؤخر الحمل.";
 }
 
 document.getElementById("title").innerText = title;
@@ -65,6 +68,9 @@ document.getElementById("desc").innerText = desc;
 document.getElementById("function").innerText = "📌 الوظيفة: " + func;
 document.getElementById("problems").innerText = "⚠️ المشاكل: " + problems;
 
+function nextPage() {
+    window.location.href = "simulation.html";
+}
 </script>
 
 </body>
